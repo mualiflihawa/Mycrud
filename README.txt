@@ -10,7 +10,7 @@ $app->insert("namaTable",$data);
 
 [+] untuk baca data --------------------------
 
-$result=$app->select("namaTable");
+$result=$app->get("namaTable");
 var_dump($result->fetch_array());
 
 [+] untuk update data --------------------------

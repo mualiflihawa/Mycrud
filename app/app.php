@@ -39,7 +39,7 @@ class app extends config{
     }
 
     //select query mysqli
-    public function select($table=""){
+    public function get($table=""){
         return $this->db->query("SELECT * FROM $table");
     }
 
