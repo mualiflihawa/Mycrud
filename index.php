@@ -3,29 +3,39 @@
 
     $app = new app();
 
-    // $data = array(
-    //     "nama_lengkap" => "wuw",
-    //     "jenis_kelamin" => "Laki Laki",
-    //     "email" => "mumwu@gmail.com"
-    // );
-    
-    // $app->insert("mahasiswa",$data);
+    // [+] untuk kirim data --------------------------
 
     // $data = array(
-    //     "id" => "8"
+    //     "nama"          => "Mu'alif lihawa",
+    //     "jenis_kelamin" => "Laki - Laki"
     // );
 
-    // $app->delete("mahasiswa",$data);
+    // $app->insert("namaTable",$data);
+
+
+    // [+] untuk baca data --------------------------
+
+    // $result=$app->select("namaTable");
+    // var_dump($result->fetch_array());
+
+    // [+] untuk update data --------------------------
 
     // $data = array(
-    //     "nama_lengkap"=> "erere",
-    //     "jenis_kelamin"=> "Perempuan"
+    //     "nama" => "Mu'alif"
     // );
 
-    // $app->update("mahasiswa",$data,array("id"=>"4"));
+    // $id=array(
+    //     "id" => 01
+    // );
 
-    // $data=$app->select("mahasiswa");
-    
-    // var_dump($data->fetch_array());
+    // $app->update("namaTable",$data,$id);
+
+    // [+] untuk delete data --------------------------
+
+    // $id=array(
+    //     "id" => 01
+    // );
+
+    // $app->delete("namaTable",$id);
 
 ?>
