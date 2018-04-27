@@ -32,3 +32,8 @@ $id=array(
 );
 
 $app->delete("namaTable",$id);
+
+[+] untuk method lain --------------------------
+
+$data=$app->select()->from()->where()->orderby()->limit()->execute();
+$data->fetch_array();

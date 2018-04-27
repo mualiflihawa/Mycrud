@@ -5,6 +5,7 @@ require_once("config.php");
 class app extends config{
 
     private $db;
+    private $mysqliPart;
 
     //connect to DB
     public function __construct(){
@@ -14,7 +15,8 @@ class app extends config{
 			echo "Show Error : ".$mysqli->connect_error; 
 		}
 
-		$this->db = $mysqli;
+        $this->db = $mysqli;
+        $this->mysqliPart = NULL;
     }
 
     //query mysqli
@@ -73,6 +75,69 @@ class app extends config{
 
         return $this->db->query("UPDATE $table SET $result_data WHERE $result_primary");
     }
+
+    //mysqli Part
+        //select
+        public function select($data=""){
+            $data=trim($data," ");
+            if(empty($data) || $data=="" || $data==NULL){
+                $data="*";
+            }else{
+                $data=$data;
+            }
+            $this->mysqliPart .= "SELECT " . $data;
+            return $this;
+        }
+
+        //from table
+        public function from($data=NULL){//not array
+            $data=trim($data," ");
+            if(empty($data) || $data=="" || $data==NULL){
+                $data = "Your Table";
+            }else{
+                $data = $data;
+            }
+            $this->mysqliPart .= " FROM " . $data;
+            return $this;
+        }
+
+        //order by
+        public function orderby($data=NULL){//not array
+            $data=trim($data," ");
+            if(empty($data) || $data=="" || $data==NULL){
+                $data = "Your ORDER BY";
+            }else{
+                $data = $data;
+            }
+            $this->mysqliPart .= " ORDER BY " . $data;
+            return $this;
+        }
+
+        //where
+        public function where($data=NULL){//not array
+            $this->mysqliPart .= " WHERE " . $data;
+            return $this;
+        }
+
+        //limit
+        public function limit($data=NULL){//not array
+            $data=trim($data," ");
+            if(empty($data) || $data=="" || $data==NULL){
+                $data = "Your LIMIT";
+            }else{
+                $data = $data;
+            }
+            $this->mysqliPart .= " LIMIT " . $data;
+            return $this;
+        }
+
+        //execute
+        public function execute(){
+            $queryResult=$this->mysqliPart;
+            $result=$this->db->query("$queryResult");
+
+            return $result;
+        }
 
 }
 
