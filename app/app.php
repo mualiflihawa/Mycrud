@@ -14,7 +14,7 @@ class app extends config{
 			echo "Show Error : ".$mysqli->connect_error; 
 		}
 
-		return $this->db = $mysqli;
+		$this->db = $mysqli;
     }
 
     //query mysqli
